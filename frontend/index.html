@@ -1,19 +1,41 @@
 <!DOCTYPE html>
-<html xml:lang="es">
-  <head>
-    <title>Sumador</title>
-  </head>
-  <body>
-    <h1>Sumador</h1>
-    <form id="sumar-form">
-      <label for="primer-numero">Primer número:</label>
-      <input type="number" id="primer-numero" />
-      <label for="segundo-numero">Segundo número:</label>
-      <input type="number" id="segundo-numero" />
-      <input type="submit" value="Sumar" id="sumar-button" />
-    </form>
-    <div id="resultado-div"></div>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enviar Datos al Backend</title>
+    <link rel="stylesheet" href="/src/css/styles_inicio.css">
+</head>
+<body>
+    <h1>Enviar un Nombre para Saludar:</h1>
+    <input type="text" id="nombre" placeholder="Ingresa tu nombre">
+    <button id="saludarButton">Saludar</button>
 
-    <script type="module" src="./src/presenter.js"></script>
-  </body>
+    <p id="respuesta"></p>
+
+    <script>
+        document.getElementById('saludarButton').addEventListener('click', function() {
+            // Obtener el nombre del input
+            const nombre = document.getElementById('nombre').value;
+
+            // Hacer una solicitud POST al backend
+            fetch('http://localhost:8080/api/saludar', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ nombre })   // Enviar el nombre como un objeto JSON
+            })
+            .then(response => response.text())  // Convertir la respuesta a texto
+            .then(data => {
+                // Mostrar la respuesta del backend
+                document.getElementById('respuesta').textContent = data;
+            })
+            .catch(error => {
+                // Manejar errores
+                console.error('Error al enviar el nombre:', error);
+            });
+        });
+    </script>
+</body>
 </html>
