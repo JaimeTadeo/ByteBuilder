@@ -23,7 +23,9 @@ Para iniciar el proyecto en el FrontEnd Colocar el comando npm run y para inicar
 
 ## Creditos
 Jaime De Ugarte - Dev   (https://github.com/JaimeTadeo) Contribuyendo en el area de FrontEnd
+
 Diego Lazarte - PO   (https://github.com/Wiurtt) Contribuyendo en el area de FrontEnd
+
 Jose Carlos Lopez - Master  (https://github.com/Joshx567) Contribuyendo en el area de BackEnd
 
 ## Estado del Proyecto
